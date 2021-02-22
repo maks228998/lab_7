@@ -1,6 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include "my_lib.h"
-//version 0.2
+//version 0.3
 
 int int_rand_min_max(const int min, const int max)
 {
@@ -11,57 +11,48 @@ int int_rand_min_max(const int min, const int max)
 }
 
 int input_int_number() {
-	int n_is_not_number = 0;
-	int n = 0;
+	int number = 0;
+	printf("Input number: \n");
 
-	do {
-		printf("Input number: \n");
+	while (scanf("%d", &number) != 1)
+	{
+		while (getchar() != '\n');
 
-		int count_vars_scanf = scanf("%d", &n);
-		getchar();
-
-		n_is_not_number = (count_vars_scanf != 1);
-
-		if (n_is_not_number) {
-			printf("Input error: not a number entered\n");
-		}
-		else {}
-
-	} while (n_is_not_number);
-	return n;
-
+		printf("Input error: not a number entered\n");
+	}
+	return number;
 }
 
-int get_int_number_on_positive() {
-	int n = 0;
-	int n_is_negative = 0;
+	int get_int_number_on_positive() {
+	int number = 0;
+	int is_negative = 0;
 
 	do {
-		n = input_int_number();
+		number = input_int_number();
 
-		n_is_negative = (n < 0.0);
-		if (n_is_negative) {
+		is_negative = (number < 0.0);
+		if (is_negative) {
 			printf("Input error: not a correct number entered\n");
 		}
 		else {}
 
-	} while (n_is_negative);
-	return n;
+	} while (is_negative);
+	return number;
 
 }
 
 int get_int_number_on_1_or_0() {
-	int n = 0;
+	int number = 0;
 	int n_is_1_or_0 = 0;
 
 	do {
 		n_is_1_or_0 = 0;
-		n = get_int_number_on_positive();
+		number = get_int_number_on_positive();
 
-		if (n == 1) {
+		if (number == 1) {
 		}
 		else {
-			if (n == 0) {
+			if (number == 0) {
 			}
 			else {
 				printf("Input error: this is not correct number\n");
@@ -70,45 +61,38 @@ int get_int_number_on_1_or_0() {
 		}
 
 	} while (n_is_1_or_0);
-	return n;
+	return number;
 }
 
 int get_int_number_than_greater_1() {
-	int n = 0;
+	int number = 0;
 	int n_is_one_or_less = 0;
 
 	do {
-		n = input_int_number();
+		number = input_int_number();
 
-		n_is_one_or_less = (n < 1);
+		n_is_one_or_less = (number < 1);
 		if (n_is_one_or_less) {
 			printf("Input error: not a correct number entered\n");
 		}
 		else {}
 
 	} while (n_is_one_or_less);
-	return n;
+	return number;
 }
 
 double input_double_number() {
-	int n_is_not_number = 0;
-	double n = 0;
+	double number = 0;
+	
+	printf("Input number: \n");
 
-	do {
-		printf("Input number: \n");
+	while (scanf("%lf", &number) != 1)
+	{
+		while (getchar() != '\n');
 
-		int count_vars_scanf = scanf("%lf", &n);
-		getchar();
-
-		n_is_not_number = (count_vars_scanf != 1);
-
-		if (n_is_not_number) {
-			printf("Input error: not a number entered\n");
-		}
-		else {}
-
-	} while (n_is_not_number);
-	return n;
+		printf("Input error: not a number entered\n");
+	}
+	return number;
 }
 
 double double_rand_min_max(const double min, const double max)
@@ -119,43 +103,36 @@ double double_rand_min_max(const double min, const double max)
 	}
 
 double get_double_number_than_greater_1() {
-	double n = 0;
-	int n_is_one_or_less = 1;
+	double number = 0;
+	int is_one_or_less = 1;
 
 	do {
-		n = input_double_number();
+		number = input_double_number();
 
-		n_is_one_or_less = (n < 1);
-		if (n_is_one_or_less) {
+		is_one_or_less = (number < 1);
+		if (is_one_or_less) {
 			printf("Input error: not a correct number entered\n");
 		}
 		else {}
 
-	} while (n_is_one_or_less);
-	return n;
+	} while (is_one_or_less);
+	return number;
 }
 
 double get_double_number_on_positive() {
-	double n = 0;
-	int Input_error = 2;
+	double number = 0;
+	int Input_error = 1;
 
 	do {
-		n = input_double_number();
+		number = input_double_number();
 
-		if (n < 0.0) {
+		if (number <= 0) {
 			printf("Input error: not a correct number entered\n");
 		}
 		else {
-			Input_error = Input_error - 1;
-		}
-
-		if (n == 0) {
-			printf("Input error: not a correct number entered\n");
-		}
-		else {
-			Input_error = Input_error - 1;
+			Input_error = 0;
 		}
 
 	} while (Input_error);
-	return n;
+	return number;
 }
